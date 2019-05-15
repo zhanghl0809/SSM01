@@ -51,6 +51,7 @@
     </dependency>
 
     <!-- 添加spring核心依赖 -->
+    <!-- 添加spring核心依赖 -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
