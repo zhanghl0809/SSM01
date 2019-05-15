@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+    <!-- 启动SpringMVC注解 -->
+    <context:annotation-config/>
+    <!-- 自动扫描 @Controller-->
+    <context:component-scan base-package="com.ssm"/>
+
+    <!-- 配置视图解析器-->
+    <!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 加上mvc驱动-->
+    <mvc:annotation-driven>
+        <!--配置消息转换器以支持json的使用-->
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 对静态资源文件的访问-->
+    <!--<mvc:resources location="/WEB-INF/resources/js/" mapping="/js/**"/>-->
+    <!--<mvc:resources mapping="/images/**"  location="/images/"/>-->
+    <!--<mvc:resources mapping="/css/**"  location="/css/" />-->
+    <!--<mvc:resources mapping="/favicon.ico"  location="favicon.ico" /> -->
+    <!-- 静态资源映射 location是本地静态资源路径 mapping是映射的url地址，访问时就使用该地址 -->
+    <mvc:default-servlet-handler />
+    <mvc:resources mapping="/images/**" location="/images/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/fonts/**" location="/fonts/" />
+    <mvc:resources mapping="/lib/**" location="/lib/" />
+
+
+
+    <!--&lt;!&ndash; 配置拦截器 &ndash;&gt;-->
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--&lt;!&ndash; 设置拦截路径 &ndash;&gt;-->
+            <!--<mvc:mapping path="/**"/>-->
+            <!--&lt;!&ndash;&lt;!&ndash; 排除拦截路径 &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<mvc:exclude-mapping path="/base/login.do"/>&ndash;&gt;-->
+            <!--&lt;!&ndash; 定义的Session拦截器 &ndash;&gt;-->
+            <!--<bean id="LogsInterceptor" class="com.ssm.base.intercepter.LogsInterceptor"/>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+
+    <!--&lt;!&ndash; 配置拦截器 &ndash;&gt;-->
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--&lt;!&ndash; 设置拦截路径 &ndash;&gt;-->
+            <!--<mvc:mapping path="/**"/>-->
+            <!--&lt;!&ndash;&lt;!&ndash; 排除拦截路径 &ndash;&gt;&ndash;&gt;-->
+           <!--<mvc:exclude-mapping path="/base/login"/>-->
+            <!--&lt;!&ndash; 定义的Session拦截器 &ndash;&gt;-->
+            <!--<bean id="MyInterceptor" class="com.ssm.base.intercepter.MyInterceptor"/>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+
+
+    <!--&lt;!&ndash;&lt;!&ndash; 简单统一异常处理 &ndash;&gt;&ndash;&gt;-->
+    <!--<bean id="simpleMappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+       <!--<property name="defaultErrorView" value="error" />-->
+       <!--<property name="exceptionAttribute" value="ex" />-->
+       <!--<property name="exceptionMappings">-->
+           <!--<props>-->
+               <!--<prop key="com.ssm.base.exception.AllExceptions">-->
+                   <!--/WEB-INF/jsp/error-->
+               <!--</prop>-->
+           <!--</props>-->
+       <!--</property>-->
+   <!--</bean>-->
+
+    <!-- 文件上传配置 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 默认编码 -->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 上传文件大小限制为31M，31*1024*1024 -->
+        <property name="maxUploadSize" value="32505856"/>
+        <!-- 内存中的最大值 -->
+        <property name="maxInMemorySize" value="4096"/>
+    </bean>
+    <!--静态资源处理-->
+    <mvc:default-servlet-handler/>
+</beans>
