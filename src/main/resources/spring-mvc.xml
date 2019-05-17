@@ -49,19 +49,17 @@
     <mvc:resources mapping="/fonts/**" location="/fonts/" />
     <mvc:resources mapping="/lib/**" location="/lib/" />
 
-
-
-    <!--&lt;!&ndash; 配置拦截器 &ndash;&gt;-->
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--&lt;!&ndash; 设置拦截路径 &ndash;&gt;-->
-            <!--<mvc:mapping path="/**"/>-->
-            <!--&lt;!&ndash;&lt;!&ndash; 排除拦截路径 &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;<mvc:exclude-mapping path="/base/login.do"/>&ndash;&gt;-->
-            <!--&lt;!&ndash; 定义的Session拦截器 &ndash;&gt;-->
-            <!--<bean id="LogsInterceptor" class="com.ssm.base.intercepter.LogsInterceptor"/>-->
-        <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 设置拦截路径 -->
+            <mvc:mapping path="/**"/>
+            <!--&lt;!&ndash; 排除拦截路径 &ndash;&gt;-->
+            <!--<mvc:exclude-mapping path="/base/login.do"/>-->
+            <!-- 定义的Session拦截器 -->
+            <bean id="LogInterceptor" class="com.ssm.base.intercepter.LogInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!--&lt;!&ndash; 配置拦截器 &ndash;&gt;-->
     <!--<mvc:interceptors>-->
@@ -98,6 +96,5 @@
         <!-- 内存中的最大值 -->
         <property name="maxInMemorySize" value="4096"/>
     </bean>
-    <!--静态资源处理-->
-    <mvc:default-servlet-handler/>
+
 </beans>

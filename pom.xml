@@ -13,7 +13,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!-- spring版本号 -->
-    <spring.version>4.2.5.RELEASE</spring.version>
+    <spring.version>5.0.2.RELEASE</spring.version>
 
     <!-- mybatis版本号 -->
     <mybatis.version>3.2.8</mybatis.version>
@@ -34,7 +34,12 @@
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
-
+    <!--commons-lang3中DateUtils-->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.7</version>
+    </dependency>
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
@@ -185,8 +190,26 @@
       <artifactId>aspectjweaver</artifactId>
       <version>1.9.2</version>
     </dependency>
+
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>5.2.4.Final</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>SSM</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>6</source>
+          <target>6</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
