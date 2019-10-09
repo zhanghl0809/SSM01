@@ -28,7 +28,7 @@
     <![endif]-->
 
     <script>
-        // 是否开启刷新记忆tab功能
+        // 是否开启刷新记忆tab功能...
          var is_remember = false;
     </script>
 </head>
