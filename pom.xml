@@ -140,7 +140,7 @@
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
-      <version>[1.2.31,)</version>
+      <version>1.2.70</version>
     </dependency>
 
     <!-- 添加日志相关jar包 -->
@@ -197,18 +197,7 @@
       <artifactId>hibernate-validator</artifactId>
       <version>5.2.4.Final</version>
     </dependency>
-    <!--webmagic-->
-    <dependency>
-      <groupId>us.codecraft</groupId>
-      <artifactId>webmagic-core</artifactId>
-      <version>0.7.3</version>
-    </dependency>
 
-    <dependency>
-      <groupId>us.codecraft</groupId>
-      <artifactId>webmagic-extension</artifactId>
-      <version>0.7.3</version>
-    </dependency>
   </dependencies>
   <build>
     <finalName>SSM</finalName>
